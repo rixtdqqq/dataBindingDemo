@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.zhyx.databindingdemo.viewmodel.me.MeInfoMoreViewModel"/>
+
+        <variable
+            name="navigationOnClickListener"
+            type="android.view.View.OnClickListener"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBg"
+        android:orientation="vertical"
+        tools:context="com.zhyx.databindingdemo.view.activity.me.MeInfoMoreActivity">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_me_info_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:minHeight="?attr/actionBarSize"
+            android:navigationOnClickListener="@{navigationOnClickListener}"
+            app:navigationIcon="@drawable/ic_keyboard_arrow_left_black_24dp"
+            app:popupTheme="@style/OverFlowMenuTheme"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="更多"/>
+
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@android:color/white">
+
+            <TextView
+                android:id="@+id/more_gender_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_15dp"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="性别"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+            <TextView
+                android:id="@+id/more_gender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:onClick="@{() -> viewModel.selectGender()}"
+                app:layout_constraintBaseline_toBaselineOf="@+id/more_gender_title"
+                app:layout_constraintLeft_toRightOf="@+id/more_gender_title"
+                app:layout_constraintRight_toLeftOf="@+id/more_gender_iv"
+                tools:text="男"/>
+
+            <ImageView
+                android:id="@+id/more_gender_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:onClick="@{() -> viewModel.selectGender()}"
+                android:src="@drawable/ic_keyboard_arrow_right_black_16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/more_gender_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/more_gender_title"/>
+
+            <View
+                android:id="@+id/line_more_gender"
+                android:layout_width="0dp"
+                android:background="@color/colorBg"
+                android:layout_height="@dimen/height_1dp"
+                app:layout_constraintLeft_toLeftOf="@+id/more_gender_title"
+                app:layout_constraintTop_toBottomOf="@+id/more_gender_title"/>
+            <TextView
+                android:id="@+id/more_area_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_15dp"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="地区"
+                app:layout_constraintTop_toBottomOf="@+id/line_more_gender"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+            <TextView
+                android:id="@+id/more_area"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:onClick="@{() -> viewModel.selectArea()}"
+                app:layout_constraintBaseline_toBaselineOf="@+id/more_area_title"
+                app:layout_constraintLeft_toRightOf="@+id/more_area_title"
+                app:layout_constraintRight_toLeftOf="@+id/more_gender_iv"
+                tools:text="江西 吉安"/>
+
+            <ImageView
+                android:id="@+id/more_area_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:onClick="@{() -> viewModel.selectArea()}"
+                android:src="@drawable/ic_keyboard_arrow_right_black_16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/more_area_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/more_area_title"/>
+
+            <View
+                android:id="@+id/line_more_area"
+                android:layout_width="0dp"
+                android:background="@color/colorBg"
+                android:layout_height="@dimen/height_1dp"
+                app:layout_constraintLeft_toLeftOf="@+id/more_area_title"
+                app:layout_constraintTop_toBottomOf="@+id/more_area_title"/>
+            <TextView
+                android:id="@+id/more_signature_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_15dp"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                app:layout_constraintTop_toTopOf="@+id/more_signature"
+                app:layout_constraintBottom_toBottomOf="@+id/more_signature"
+                android:text="个性签名"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+            <TextView
+                android:id="@+id/more_signature"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:onClick="@{() -> viewModel.selectGender()}"
+                android:paddingTop="@dimen/padding_8dp"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingLeft="@dimen/padding_8dp"
+                app:layout_constraintTop_toBottomOf="@+id/line_more_area"
+                app:layout_constraintRight_toLeftOf="@+id/more_signature_iv"
+                app:layout_constraintLeft_toRightOf="@+id/more_signature_title"
+                tools:text="个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名"/>
+
+            <ImageView
+                android:id="@+id/more_signature_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:onClick="@{() -> viewModel.selectGender()}"
+                android:src="@drawable/ic_keyboard_arrow_right_black_16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/more_signature_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/more_signature_title"/>
+
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</layout>

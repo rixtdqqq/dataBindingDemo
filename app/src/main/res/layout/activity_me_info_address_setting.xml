@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.zhyx.databindingdemo.viewmodel.me.MeInfoAddressSettingViewModel"/>
+
+        <variable
+            name="name"
+            type="String"/>
+
+        <variable
+            name="phone"
+            type="String"/>
+
+        <variable
+            name="area"
+            type="String"/>
+
+        <variable
+            name="detailAddress"
+            type="String"/>
+
+        <variable
+            name="areaCode"
+            type="String"/>
+
+        <import type="android.view.View"/>
+
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBg"
+        android:orientation="vertical"
+        tools:context="com.zhyx.databindingdemo.view.activity.me.MeInfoAddressSettingActivity">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_me_info_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:minHeight="?attr/actionBarSize">
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="设置地址"/>
+            <TextView
+                android:onClick="@{() -> viewModel.setAddress(name,phone,area,detailAddress,areaCode)}"
+                style="@style/TitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textSize="@dimen/title_text_size_14sp"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:text="完成"/>
+            <TextView
+                android:onClick="@{() -> viewModel.cancelSetAddress()}"
+                style="@style/TitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/title_text_size_14sp"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:text="取消"/>
+
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@android:color/white">
+
+            <TextView
+                android:id="@+id/contact_name_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="联系人"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+            <EditText
+                android:id="@+id/contact_name_et"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_30dp"
+                android:background="@null"
+                android:hint="名字"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:text="@={name}"
+                android:maxLength="15"
+                android:singleLine="true"
+                android:textSize="@dimen/title_text_size_14sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/contact_name_title"
+                app:layout_constraintLeft_toRightOf="@+id/contact_name_title"
+                app:layout_constraintRight_toLeftOf="@+id/contact_iv"/>
+
+            <ImageView
+                android:onClick="@{() -> viewModel.jumpToContact()}"
+                android:id="@+id/contact_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:paddingBottom="@dimen/padding_5dp"
+                android:paddingLeft="@dimen/padding_5dp"
+                android:paddingTop="@dimen/padding_5dp"
+                android:src="@drawable/ic_contacts_black_16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/contact_name_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/contact_name_title"/>
+
+            <View
+                android:id="@+id/line_contact"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_1dp"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:background="@color/colorBg"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contact_name_title"/>
+
+            <TextView
+                android:id="@+id/contact_phone_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="手机号码"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line_contact"/>
+
+            <EditText
+                android:id="@+id/contact_phone_et"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:background="@null"
+                android:digits="0123456789"
+                android:hint="11位手机号"
+                android:imeOptions="actionNext"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:text="@={phone}"
+                android:singleLine="true"
+                android:textSize="@dimen/title_text_size_14sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/contact_phone_title"
+                app:layout_constraintLeft_toLeftOf="@+id/contact_name_et"
+                app:layout_constraintLeft_toRightOf="@+id/contact_phone_title"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <View
+                android:id="@+id/line_phone"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_1dp"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:background="@color/colorBg"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contact_phone_title"/>
+
+            <TextView
+                android:id="@+id/contact_area_select_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="选择地区"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line_phone"/>
+
+            <TextView
+                android:id="@+id/contact_area_select"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="地区信息"
+                android:singleLine="true"
+                android:text="@={area}"
+                android:textSize="@dimen/title_text_size_14sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/contact_area_select_title"
+                app:layout_constraintLeft_toLeftOf="@+id/contact_name_et"
+                app:layout_constraintLeft_toRightOf="@+id/contact_name_title"
+                app:layout_constraintRight_toLeftOf="@+id/contact_iv"/>
+
+            <ImageView
+                android:onClick="@{() -> viewModel.jumpToLocationActivity()}"
+                android:id="@+id/contact_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:paddingBottom="@dimen/padding_5dp"
+                android:paddingLeft="@dimen/padding_5dp"
+                android:paddingTop="@dimen/padding_5dp"
+                android:src="@drawable/ic_location_on_black_16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/contact_area_select_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/contact_area_select_title"/>
+
+
+            <View
+                android:id="@+id/line_area"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_1dp"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:background="@color/colorBg"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contact_area_select_title"/>
+
+            <TextView
+                android:id="@+id/contact_detail_address_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="详细地址"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line_area"/>
+
+            <EditText
+                android:id="@+id/contact_detail_address_et"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:background="@null"
+                android:hint="街道门牌信息"
+                android:imeOptions="actionNext"
+                android:text="@={detailAddress}"
+                android:inputType="text"
+                android:textSize="@dimen/title_text_size_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/contact_detail_address_title"
+                app:layout_constraintLeft_toLeftOf="@+id/contact_name_et"
+                app:layout_constraintLeft_toRightOf="@+id/contact_detail_address_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/contact_detail_address_title"
+                tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
+
+            <View
+                android:id="@+id/line_detail_address"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_1dp"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:background="@color/colorBg"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contact_detail_address_title"/>
+
+            <TextView
+                android:id="@+id/contact_area_code_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="邮政编码"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line_detail_address"/>
+
+            <EditText
+                android:id="@+id/contact_area_code_et"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:background="@null"
+                android:digits="0123456789"
+                android:hint="邮政编码"
+                android:text="@={areaCode}"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLength="6"
+                android:textSize="@dimen/title_text_size_14sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/contact_area_code_title"
+                app:layout_constraintLeft_toLeftOf="@+id/contact_name_et"
+                app:layout_constraintLeft_toRightOf="@+id/contact_area_code_title"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="person"
+            type="com.zhyx.databindingdemo.model.Person"/>
+
+        <variable
+            name="viewModel"
+            type="com.zhyx.databindingdemo.viewmodel.HomeFragmentViewModel"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardPreventCornerOverlap="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardUseCompatPadding="true">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_name_title_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="姓名:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_name_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="@{person.userName}"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_name_title_item"
+                app:layout_constraintStart_toEndOf="@+id/tv_name_title_item"
+                tools:text="zzzzz"/>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:text="@{person.comeFrom}"
+                app:layout_constraintEnd_toStartOf="@+id/iv_add_friend"
+                app:layout_constraintStart_toEndOf="@+id/tv_come_from_title_item"
+                app:layout_constraintTop_toTopOf="@+id/tv_come_from_title_item"
+                tools:text="中国江西省吉安市"/>
+
+            <ImageView
+                android:id="@+id/iv_add_friend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->viewModel.add(person)}"
+                android:src="@drawable/ic_add_circle_black_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="contentDescription"/>
+
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5"/>
+
+            <TextView
+                android:id="@+id/tv_age_title_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="年龄:"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_name_title_item"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"/>
+
+            <TextView
+                android:id="@+id/tv_age_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="@{String.valueOf(person.age)}"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_age_title_item"
+                app:layout_constraintStart_toEndOf="@+id/tv_age_title_item"
+                tools:text="22"/>
+
+            <TextView
+                android:id="@+id/tv_come_from_title_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="来自:"
+                app:layout_constraintStart_toStartOf="@+id/tv_name_title_item"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name_title_item"/>
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+</layout>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.zhyx.databindingdemo.viewmodel.me.MeInfoViewModel"/>
+
+        <variable
+            name="navigationOnClickListener"
+            type="android.view.View.OnClickListener"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBg"
+        android:orientation="vertical"
+        tools:context="com.zhyx.databindingdemo.view.activity.me.MeInfoActivity">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            app:navigationIcon="@drawable/ic_keyboard_arrow_left_black_24dp"
+            android:navigationOnClickListener="@{navigationOnClickListener}"
+            android:minHeight="?attr/actionBarSize">
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="个人信息"/>
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@android:color/white">
+
+            <TextView
+                android:id="@+id/info_photo_title"
+                android:layout_width="0dp"
+                app:layout_constraintRight_toLeftOf="@+id/info_photo_iv"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_15dp"
+                android:gravity="center_vertical"
+                android:text="头像"
+                android:onClick="@{() -> viewModel.jumpToPersonalPhotoActivity()}"
+                android:paddingTop="@dimen/padding_8dp"
+                android:paddingBottom="@dimen/padding_8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/info_photo_iv"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/info_photo_iv"/>
+
+            <ImageView
+                android:id="@+id/info_photo_iv"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginRight="@dimen/margin_40dp"
+                android:onClick="@{() -> viewModel.jumpToPersonalPhotoActivity()}"
+                android:src="@drawable/ic_person_black_24dp"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <ImageView
+                android:id="@+id/info_photo_right_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:onClick="@{() -> viewModel.jumpToPersonalPhotoActivity()}"
+                android:src="@drawable/ic_keyboard_arrow_right_black_16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/info_photo_iv"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/info_photo_iv"/>
+
+            <View
+                android:id="@+id/line_info_photo"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_1dp"
+                android:background="@color/colorBg"
+                app:layout_constraintLeft_toLeftOf="@+id/info_photo_title"
+                app:layout_constraintTop_toBottomOf="@+id/info_photo_iv"/>
+
+            <TextView
+                android:id="@+id/info_name_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="名字"
+                app:layout_constraintLeft_toLeftOf="@+id/info_photo_title"
+                app:layout_constraintTop_toBottomOf="@+id/line_info_photo"/>
+
+            <ImageView
+                android:id="@+id/info_name_right_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:onClick="@{() -> viewModel.jumpToNameSettingActivity()}"
+                android:src="@drawable/ic_keyboard_arrow_right_black_16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/info_name_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/info_name_title"/>
+
+            <TextView
+                android:id="@+id/info_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:onClick="@{() -> viewModel.jumpToNameSettingActivity()}"
+                app:layout_constraintBottom_toBottomOf="@+id/info_name_title"
+                app:layout_constraintLeft_toRightOf="@+id/info_name_title"
+                app:layout_constraintRight_toLeftOf="@+id/info_name_right_iv"
+                app:layout_constraintTop_toTopOf="@+id/info_name_title"
+                tools:text="昵称"/>
+
+            <View
+                android:id="@+id/line_info_name"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_1dp"
+                android:background="@color/colorBg"
+                app:layout_constraintLeft_toLeftOf="@+id/info_photo_title"
+                app:layout_constraintTop_toBottomOf="@+id/info_name_title"/>
+
+            <TextView
+                android:id="@+id/info_account_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="账号"
+                app:layout_constraintLeft_toLeftOf="@+id/info_photo_title"
+                app:layout_constraintTop_toBottomOf="@+id/line_info_name"/>
+
+
+            <TextView
+                android:id="@+id/info_account"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_15dp"
+                android:gravity="right"
+                app:layout_constraintBottom_toBottomOf="@+id/info_account_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/info_account_title"
+                tools:text="aaaaaa"/>
+
+
+            <View
+                android:id="@+id/line_info_account"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_1dp"
+                android:background="@color/colorBg"
+                app:layout_constraintLeft_toLeftOf="@+id/info_photo_title"
+                app:layout_constraintTop_toBottomOf="@+id/info_account_title"/>
+
+            <TextView
+                android:id="@+id/info_code_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.jumpToMeInfoCodeActivity()}"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="我的二维码"
+                app:layout_constraintEnd_toStartOf="@+id/info_code_iv"
+                app:layout_constraintLeft_toLeftOf="@+id/info_photo_title"
+                app:layout_constraintTop_toBottomOf="@+id/line_info_account"/>
+
+
+            <ImageView
+                android:id="@+id/info_code_right_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:onClick="@{() -> viewModel.jumpToMeInfoCodeActivity()}"
+                android:src="@drawable/ic_keyboard_arrow_right_black_16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/info_code_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/info_code_title"/>
+
+            <ImageView
+                android:id="@+id/info_code_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.jumpToMeInfoCodeActivity()}"
+                android:src="@drawable/ic_er_wei_code"
+                app:layout_constraintBottom_toBottomOf="@+id/info_code_title"
+                app:layout_constraintRight_toLeftOf="@+id/info_code_right_iv"
+                app:layout_constraintTop_toTopOf="@+id/info_code_title"/>
+
+
+            <View
+                android:id="@+id/line_info_code"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_1dp"
+                android:background="@color/colorBg"
+                app:layout_constraintLeft_toLeftOf="@+id/info_photo_title"
+                app:layout_constraintTop_toBottomOf="@+id/info_code_title"/>
+
+            <TextView
+                android:id="@+id/info_more_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.jumpToMeInfoMoreActivity()}"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="更多"
+                app:layout_constraintEnd_toStartOf="@+id/info_more_right_iv"
+                app:layout_constraintLeft_toLeftOf="@+id/info_photo_title"
+                app:layout_constraintTop_toBottomOf="@+id/line_info_code"/>
+
+
+            <ImageView
+                android:id="@+id/info_more_right_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:onClick="@{() -> viewModel.jumpToMeInfoMoreActivity()}"
+                android:src="@drawable/ic_keyboard_arrow_right_black_16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/info_more_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/info_more_title"/>
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/info_me_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_15dp"
+            android:background="@android:color/white"
+            android:drawableRight="@drawable/ic_keyboard_arrow_right_black_16dp"
+            android:gravity="center_vertical"
+            android:onClick="@{() -> viewModel.jumpToMeInfoAddressActivity()}"
+            android:paddingBottom="@dimen/padding_8dp"
+            android:paddingLeft="@dimen/padding_15dp"
+            android:paddingRight="@dimen/padding_10dp"
+            android:paddingTop="@dimen/padding_8dp"
+            android:text="我的地址"/>
+    </LinearLayout>
+</layout>

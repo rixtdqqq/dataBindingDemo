@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.zhyx.databindingdemo.viewmodel.me.MeInfoCodeViewModel"/>
+        <variable
+            name="navigationOnClickListener"
+            type="android.view.View.OnClickListener"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBg2"
+        android:orientation="vertical"
+        tools:context="com.zhyx.databindingdemo.view.activity.me.MeInfoCodeActivity">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_me_info_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:minHeight="?attr/actionBarSize"
+            android:navigationOnClickListener="@{navigationOnClickListener}"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/OverFlowMenuTheme"
+            app:navigationIcon="@drawable/ic_keyboard_arrow_left_black_24dp">
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="我的二维码"/>
+
+            <ImageView
+                android:onClick="@{() -> viewModel.more()}"
+                android:layout_marginRight="@dimen/margin_20dp"
+                android:layout_gravity="right"
+                android:src="@drawable/ic_more_horiz_black_24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_40dp"
+            android:layout_marginLeft="@dimen/margin_15dp"
+            android:layout_marginRight="@dimen/margin_15dp"
+            android:layout_marginTop="@dimen/margin_40dp"
+            android:background="@android:color/white">
+
+            <ImageView
+                android:id="@+id/code_photo_iv"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="@dimen/margin_15dp"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:src="@drawable/ic_person_black_24dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/code_nickname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_location_on_black_16dp"
+                android:ellipsize="end"
+                android:paddingBottom="@dimen/padding_2dp"
+                android:paddingTop="@dimen/padding_2dp"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/code_gl"
+                app:layout_constraintLeft_toRightOf="@+id/code_photo_iv"
+                android:text="昵称昵称昵称昵称"/>
+
+            <TextView
+                android:id="@+id/code_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_2dp"
+                android:paddingTop="@dimen/padding_2dp"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:textSize="@dimen/title_text_size_12sp"
+                app:layout_constraintLeft_toRightOf="@+id/code_photo_iv"
+                app:layout_constraintTop_toBottomOf="@+id/code_gl"
+                android:text="广东 深圳"/>
+
+            <TextView
+                android:id="@+id/code_scan_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_15dp"
+                android:text="扫一扫上面的二维码图案，加我微信"
+                android:textSize="@dimen/title_text_size_12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <ImageView
+                android:id="@+id/code_iv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/margin_15dp"
+                android:layout_marginRight="@dimen/margin_15dp"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:src="@drawable/ic_person_black_24dp"
+                app:layout_constraintBottom_toTopOf="@+id/code_scan_tip"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/code_photo_iv"/>
+
+            <View
+                android:id="@+id/code_gl"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_1dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/code_photo_iv"
+                app:layout_constraintTop_toTopOf="@+id/code_photo_iv"/>
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</layout>

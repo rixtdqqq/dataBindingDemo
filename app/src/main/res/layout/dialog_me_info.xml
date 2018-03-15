@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="myCodeViewModel"
+            type="com.zhyx.databindingdemo.viewmodel.MyCodeDialogViewModel"/>
+
+        <variable
+            name="personalPhotoViewModel"
+            type="com.zhyx.databindingdemo.viewmodel.PersonalPhotoDialogViewModel"/>
+
+        <variable
+            name="isFromMyCode"
+            type="Boolean"/>
+
+        <import type="android.view.View"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:minWidth="1000dp"
+        android:orientation="vertical"
+        tools:context="com.zhyx.databindingdemo.view.dialog.MeInfoDialog">
+
+        <TextView
+            style="@style/TextStyle14Black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="@{()->(isFromMyCode?myCodeViewModel.changeStyle():personalPhotoViewModel.takePhoto())}"
+            android:padding="@dimen/padding_8dp"
+            android:text="@{isFromMyCode?@string/change_style:@string/take_photo}"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_1dp"
+            android:background="@color/colorBg"/>
+
+        <TextView
+            style="@style/TextStyle14Black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="@{() ->(isFromMyCode? myCodeViewModel.savePic():personalPhotoViewModel.selectPhoto())}"
+            android:padding="@dimen/padding_8dp"
+            android:text="@{isFromMyCode?@string/save_pic:@string/select_pic_from_album}"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_1dp"
+            android:background="@color/colorBg"/>
+
+        <TextView
+            style="@style/TextStyle14Black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="@{() -> (isFromMyCode? myCodeViewModel.scanCode():personalPhotoViewModel.savePic())}"
+            android:padding="@dimen/padding_8dp"
+            android:text="@{isFromMyCode? @string/scan_code:@string/save_pic}"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_1dp"
+            android:background="@color/colorBg"
+            android:visibility="@{isFromMyCode?View.VISIBLE:View.GONE}"/>
+
+        <TextView
+            style="@style/TextStyle14Black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="@{isFromMyCode}"
+            android:gravity="center"
+            android:onClick="@{() -> myCodeViewModel.resetCode()}"
+            android:padding="@dimen/padding_8dp"
+            android:text="@string/reset_code"
+            android:visibility="@{isFromMyCode?View.VISIBLE:View.GONE}"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_5dp"
+            android:background="@color/colorBg"/>
+
+        <TextView
+            style="@style/TextStyle14Black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="@{() ->(isFromMyCode?  myCodeViewModel.dismiss():personalPhotoViewModel.dismiss())}"
+            android:padding="@dimen/padding_8dp"
+            android:text="@string/cancel"/>
+
+    </LinearLayout>
+</layout>

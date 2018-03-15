@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.zhyx.databindingdemo.viewmodel.MeFragmentViewModel"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBg"
+        android:orientation="vertical"
+        tools:context="com.zhyx.databindingdemo.view.fragment.MeFragment">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:minHeight="?attr/actionBarSize">
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="我"/>
+        </android.support.v7.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/me_info"
+                    android:onClick="@{() -> viewModel.jumpToMeInfoActivity()}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:background="@android:color/white">
+
+                    <ImageView
+                        android:id="@+id/me_pic_iv"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:layout_marginBottom="@dimen/margin_10dp"
+                        android:layout_marginLeft="@dimen/margin_15dp"
+                        android:src="@drawable/ic_person_black_24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_10dp"
+                        android:padding="@dimen/padding_2dp"
+                        app:layout_constraintBottom_toTopOf="@+id/me_pic_gl"
+                        app:layout_constraintLeft_toRightOf="@+id/me_pic_iv"
+                        tools:text="昵称"/>
+
+                    <TextView
+                        android:id="@+id/me_pic_account_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_10dp"
+                        android:padding="@dimen/padding_2dp"
+                        android:text="账号:"
+                        app:layout_constraintLeft_toRightOf="@+id/me_pic_iv"
+                        app:layout_constraintTop_toBottomOf="@+id/me_pic_gl"/>
+
+                    <TextView
+                        android:id="@+id/me_pic_account_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_10dp"
+                        android:padding="@dimen/padding_2dp"
+                        app:layout_constraintLeft_toRightOf="@+id/me_pic_account_title_tv"
+                        app:layout_constraintTop_toBottomOf="@+id/me_pic_gl"
+                        tools:text="aaaaaaa"/>
+
+                    <ImageView
+                        android:id="@+id/me_pic_right_iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/margin_10dp"
+                        android:src="@drawable/ic_keyboard_arrow_right_black_16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <android.support.constraint.Guideline
+                        android:id="@+id/me_pic_gl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.5"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_er_wei_code"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/me_pic_right_iv"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/me_wallet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_15dp"
+                    android:background="@android:color/white"
+                    android:drawableLeft="@drawable/ic_account_balance_wallet_black_24dp"
+                    android:drawablePadding="@dimen/padding_10dp"
+                    android:drawableRight="@drawable/ic_keyboard_arrow_right_black_16dp"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="@dimen/padding_8dp"
+                    android:paddingLeft="@dimen/padding_15dp"
+                    android:paddingRight="@dimen/padding_10dp"
+                    android:paddingTop="@dimen/padding_8dp"
+                    android:text="钱包"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_15dp"
+                    android:background="@android:color/white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/me_collection"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_favorite_black_24dp"
+                        android:drawablePadding="@dimen/padding_10dp"
+                        android:drawableRight="@drawable/ic_keyboard_arrow_right_black_16dp"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="@dimen/padding_8dp"
+                        android:paddingLeft="@dimen/padding_15dp"
+                        android:paddingRight="@dimen/padding_10dp"
+                        android:paddingTop="@dimen/padding_8dp"
+                        android:text="收藏"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_1dp"
+                        android:layout_marginLeft="@dimen/margin_15dp"
+                        android:background="@color/colorBg"/>
+
+                    <TextView
+                        android:id="@+id/me_photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_photo"
+                        android:drawablePadding="@dimen/padding_10dp"
+                        android:drawableRight="@drawable/ic_keyboard_arrow_right_black_16dp"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="@dimen/padding_8dp"
+                        android:paddingLeft="@dimen/padding_15dp"
+                        android:paddingRight="@dimen/padding_10dp"
+                        android:paddingTop="@dimen/padding_8dp"
+                        android:text="相册"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_1dp"
+                        android:layout_marginLeft="@dimen/margin_15dp"
+                        android:background="@color/colorBg"/>
+
+                    <TextView
+                        android:id="@+id/me_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_card"
+                        android:drawablePadding="@dimen/padding_10dp"
+                        android:drawableRight="@drawable/ic_keyboard_arrow_right_black_16dp"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="@dimen/padding_8dp"
+                        android:paddingLeft="@dimen/padding_15dp"
+                        android:paddingRight="@dimen/padding_10dp"
+                        android:paddingTop="@dimen/padding_8dp"
+                        android:text="卡包"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_1dp"
+                        android:layout_marginLeft="@dimen/margin_15dp"
+                        android:background="@color/colorBg"/>
+
+                    <TextView
+                        android:id="@+id/me_emoji"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_sentiment_satisfied_black_24dp"
+                        android:drawablePadding="@dimen/padding_10dp"
+                        android:drawableRight="@drawable/ic_keyboard_arrow_right_black_16dp"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="@dimen/padding_8dp"
+                        android:paddingLeft="@dimen/padding_15dp"
+                        android:paddingRight="@dimen/padding_10dp"
+                        android:paddingTop="@dimen/padding_8dp"
+                        android:text="表情"/>
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/me_settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_15dp"
+                    android:background="@android:color/white"
+                    android:drawableLeft="@drawable/ic_settings_black_16dp"
+                    android:drawablePadding="@dimen/padding_10dp"
+                    android:onClick="@{() -> viewModel.jumpToMeSettingsActivity()}"
+                    android:drawableRight="@drawable/ic_keyboard_arrow_right_black_16dp"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="@dimen/padding_8dp"
+                    android:paddingLeft="@dimen/padding_15dp"
+                    android:paddingRight="@dimen/padding_10dp"
+                    android:paddingTop="@dimen/padding_8dp"
+                    android:text="设置"/>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

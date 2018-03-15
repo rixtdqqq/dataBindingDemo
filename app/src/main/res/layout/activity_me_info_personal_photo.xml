@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.zhyx.databindingdemo.viewmodel.me.MeInfoPersonalPhotoViewModel"/>
+
+        <variable
+            name="navigationOnClickListener"
+            type="android.view.View.OnClickListener"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:orientation="vertical"
+        tools:context="com.zhyx.databindingdemo.view.activity.me.MeInfoPersonalPhotoActivity">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_me_info_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:minHeight="?attr/actionBarSize"
+            android:navigationOnClickListener="@{navigationOnClickListener}"
+            app:navigationIcon="@drawable/ic_keyboard_arrow_left_black_24dp"
+            app:popupTheme="@style/OverFlowMenuTheme"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="个人头像"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="@dimen/margin_20dp"
+                android:onClick="@{() -> viewModel.more()}"
+                android:src="@drawable/ic_more_horiz_black_24dp"/>
+        </android.support.v7.widget.Toolbar>
+
+
+        <ImageView
+            android:id="@+id/code_iv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="300dp"
+            android:layout_marginTop="@dimen/margin_30dp"
+            android:src="@drawable/ic_person_black_24dp"/>
+    </LinearLayout>
+</layout>
