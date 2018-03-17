@@ -25,7 +25,7 @@ import com.zhyx.databindingdemo.viewmodel.PersonalPhotoDialogViewModel;
 public class MeInfoDialog extends android.app.Dialog {
 
     private Context mContext;
-    private String mDialogFlag;
+    private String mDialogFlag = "";
 
     public MeInfoDialog(@NonNull Context context) {
         super(context);
@@ -40,12 +40,16 @@ public class MeInfoDialog extends android.app.Dialog {
     public MeInfoDialog(@NonNull Context context, int themeResId, String dialogFlag) {
         super(context, themeResId);
         mContext = context;
-        mDialogFlag=dialogFlag;
+        mDialogFlag = dialogFlag;
     }
 
     protected MeInfoDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
         mContext = context;
+    }
+
+    public Context getActivityContext() {
+        return mContext;
     }
 
     @Override
@@ -56,7 +60,7 @@ public class MeInfoDialog extends android.app.Dialog {
         if (TextUtils.equals(mDialogFlag, Constant.DIALOG_FLAG_MY_CODE)) {//从我的二维码页面过来
             binding.setMyCodeViewModel(new MyCodeDialogViewModel(this));
             binding.setIsFromMyCode(true);
-        } else if (TextUtils.equals(mDialogFlag,Constant.DIALOG_FLAG_PERSONAL_PHOTO)) {//从个人头像页面过来
+        } else if (TextUtils.equals(mDialogFlag, Constant.DIALOG_FLAG_PERSONAL_PHOTO)) {//从个人头像页面过来
             binding.setPersonalPhotoViewModel(new PersonalPhotoDialogViewModel(this));
             binding.setIsFromMyCode(false);
         }

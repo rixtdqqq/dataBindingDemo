@@ -15,4 +15,14 @@ public final class Constant {
      */
     public static final String DIALOG_FLAG_PERSONAL_PHOTO = "PersonalPhoto";
 
+    /**
+     * 相册
+     */
+    public static final int REQUEST_ALBUM = 0;
+
+    /**
+     * 拍照
+     */
+    public static final int REQUEST_TAKE_PHOTO = 1;
+
 }

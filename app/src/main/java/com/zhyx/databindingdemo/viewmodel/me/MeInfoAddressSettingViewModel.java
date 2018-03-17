@@ -3,7 +3,9 @@ package com.zhyx.databindingdemo.viewmodel.me;
 import android.widget.Toast;
 
 import com.zhyx.databindingdemo.App;
+import com.zhyx.databindingdemo.R;
 import com.zhyx.databindingdemo.view.activity.me.MeInfoAddressSettingActivity;
+import com.zhyx.databindingdemo.view.dialog.EditDropDialog;
 
 /**
  * 设置地址
@@ -13,6 +15,7 @@ import com.zhyx.databindingdemo.view.activity.me.MeInfoAddressSettingActivity;
 public class MeInfoAddressSettingViewModel {
 
     private MeInfoAddressSettingActivity mActivity;
+    private EditDropDialog mEditDropDialog;
 
     public MeInfoAddressSettingViewModel(MeInfoAddressSettingActivity activity) {
         mActivity=activity;
@@ -27,7 +30,10 @@ public class MeInfoAddressSettingViewModel {
      * 弹窗提示：确定要放弃此次编辑？取消、确定
      */
     public void cancelSetAddress() {
-        Toast.makeText(App.getAppContext(), "需要做弹窗提示是否放弃编辑", Toast.LENGTH_SHORT).show();
+        if (mEditDropDialog == null) {
+            mEditDropDialog = new EditDropDialog(mActivity, R.style.ActionSheetDialogStyle);
+        }
+        mEditDropDialog.show();
     }
 
 

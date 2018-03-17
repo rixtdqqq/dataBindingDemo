@@ -44,4 +44,9 @@ dependencies {
     // This is only needed if you want to use encrypted databases
 //    implementation 'net.zetetic:android-database-sqlcipher:3.5.6'
     //数据库框架end
+
+    //图片加载框架start
+    implementation 'com.github.bumptech.glide:glide:4.6.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+    //图片加载框架end
 }

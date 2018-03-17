@@ -6,6 +6,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.zhyx.databindingdemo.model.DaoMaster;
+
 import org.greenrobot.greendao.AbstractDaoMaster;
 
 /**
@@ -35,6 +37,8 @@ public class App extends Application implements Application.ActivityLifecycleCal
      * 初始化数据库框架
      */
     private void initDao() {
+        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(mContext, "dataBinding.db");
+
 
     }
 

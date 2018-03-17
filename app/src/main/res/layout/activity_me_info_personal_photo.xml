@@ -14,6 +14,14 @@
             name="navigationOnClickListener"
             type="android.view.View.OnClickListener"/>
 
+        <variable
+            name="imageUri"
+            type="android.net.Uri"/>
+
+        <variable
+            name="imageBitmap"
+            type="android.graphics.Bitmap"/>
+
     </data>
 
     <LinearLayout
@@ -55,8 +63,11 @@
             android:id="@+id/code_iv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="300dp"
             android:layout_marginTop="@dimen/margin_30dp"
-            android:src="@drawable/ic_person_black_24dp"/>
+            android:minHeight="300dp"
+            app:error="@{@drawable/ic_person_black_24dp}"
+            app:imageBitmap="@{imageBitmap}"
+            app:imageURI="@{imageUri}"
+            app:placeHolder="@{@drawable/ic_person_black_24dp}"/>
     </LinearLayout>
 </layout>
