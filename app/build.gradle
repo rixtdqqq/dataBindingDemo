@@ -12,10 +12,40 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
+    signingConfigs {
         release {
-            minifyEnabled false
+            Properties properties = new Properties()
+            properties.load(project.rootProject.file("local.properties").newDataInputStream())
+            if (properties.getProperty("FLAG") != null) {
+                storeFile file(KEYSTORE_FILE)
+                storePassword KEYSTORE_PASSWORD
+                keyAlias KEYSTORE_ALIAS
+                keyPassword KEYSTORE_ALIAS_PASSWORD
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            versionNameSuffix "-debug"
+            applicationIdSuffix ".debug"
+            resValue "string", "app_name", "dataBind测试"
+        }
+        release {
+            debuggable false
+            //混淆
+            minifyEnabled true
+            //Zipalign优化
+            zipAlignEnabled true
+            //移除无用的resource文件
+            shrinkResources true
+            //加载默认混淆配置文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //apk打包的时候需要签名
+            signingConfig signingConfigs.release
+
+            resValue "string", "app_name", "dataBind"
         }
     }
 
@@ -49,4 +79,22 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.6.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
     //图片加载框架end
+
+
+    //城市联动框架start
+    implementation 'com.contrarywind:Android-PickerView:3.2.7'
+    //城市联动框架end
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.4.0'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+
+    //日志拦截器
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+
+
 }

@@ -3,7 +3,7 @@ package com.zhyx.databindingdemo.viewmodel;
 import android.widget.Toast;
 
 import com.zhyx.databindingdemo.App;
-import com.zhyx.databindingdemo.model.Person;
+import com.zhyx.databindingdemo.model.entity.Person;
 
 /**
  *  Created by Administrator on 2018/1/27.

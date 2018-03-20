@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">dataBinding</string>
     <string name="change_style">换个样式</string>
     <string name="take_photo">拍照</string>
     <string name="select_pic_from_album">从手机相册选择</string>
@@ -9,4 +8,15 @@
     <string name="cancel">取消</string>
     <string name="done">完成</string>
     <string name="confirm">确定</string>
+    <string name="gender">性别</string>
+    <string name="area">地区</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="guess">你猜</string>
+    <string name="nickname">昵称</string>
+    <string name="password">密码</string>
+    <string name="account">用户名</string>
+    <string name="register">注册</string>
+    <string name="chat">聊天</string>
+    <string name="confirm_password">确认密码</string>
 </resources>

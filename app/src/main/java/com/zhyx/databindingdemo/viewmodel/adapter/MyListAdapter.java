@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 
 import com.zhyx.databindingdemo.R;
 import com.zhyx.databindingdemo.databinding.ItemPersonBinding;
-import com.zhyx.databindingdemo.model.Person;
+import com.zhyx.databindingdemo.model.entity.Person;
 import com.zhyx.databindingdemo.viewmodel.HomeFragmentViewModel;
 
 import java.util.List;

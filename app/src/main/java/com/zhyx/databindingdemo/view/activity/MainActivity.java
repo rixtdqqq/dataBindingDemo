@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.zhyx.databindingdemo.R;
 import com.zhyx.databindingdemo.databinding.ActivityMainBinding;
+import com.zhyx.databindingdemo.view.fragment.ChatFragment;
 import com.zhyx.databindingdemo.view.fragment.HomeFragment;
 import com.zhyx.databindingdemo.view.fragment.MeFragment;
 import com.zhyx.databindingdemo.viewmodel.MainActivityViewModel;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mBinding.setViewModel(new MainActivityViewModel());
         mFragments = new ArrayList<>();
-        mFragments.add(HomeFragment.newInstance("0"));
+        mFragments.add(ChatFragment.newInstance("chat"));
         mFragments.add(HomeFragment.newInstance("1"));
         mFragments.add(HomeFragment.newInstance("2"));
         mFragments.add(MeFragment.newInstance("me"));
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
         switch (itemId) {
-            case R.id.item_news:
+            case R.id.item_chat:
                 mBinding.fragmentViewPager.setCurrentItem(0);
                 break;
             case R.id.item_find:

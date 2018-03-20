@@ -3,12 +3,14 @@ package com.zhyx.databindingdemo;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.zhyx.databindingdemo.model.DaoMaster;
 
-import org.greenrobot.greendao.AbstractDaoMaster;
+import com.zhyx.databindingdemo.model.entity.DaoMaster;
+import com.zhyx.databindingdemo.model.entity.DaoSession;
+
 
 /**
  * 程序 入口 ，做一些第三方框架 的初始化
@@ -18,6 +20,8 @@ import org.greenrobot.greendao.AbstractDaoMaster;
 public class App extends Application implements Application.ActivityLifecycleCallbacks {
 
     private static Context mContext;
+    private SQLiteDatabase db;
+    private DaoSession daoSession;
 
     @Override
     public void onCreate() {
@@ -37,12 +41,16 @@ public class App extends Application implements Application.ActivityLifecycleCal
      * 初始化数据库框架
      */
     private void initDao() {
-        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(mContext, "dataBinding.db");
-
-
+        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(mContext, "dataBinding.db",null);
+        db = devOpenHelper.getWritableDatabase();
+        DaoMaster daoMaster = new DaoMaster(db);
+        daoSession = daoMaster.newSession();
     }
 
 
+    public DaoSession getDaoSession() {
+        return daoSession;
+    }
 
 
 

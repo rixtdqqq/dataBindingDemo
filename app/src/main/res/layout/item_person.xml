@@ -8,7 +8,7 @@
 
         <variable
             name="person"
-            type="com.zhyx.databindingdemo.model.Person"/>
+            type="com.zhyx.databindingdemo.model.entity.Person"/>
 
         <variable
             name="viewModel"

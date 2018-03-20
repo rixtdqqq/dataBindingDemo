@@ -6,6 +6,8 @@ package com.zhyx.databindingdemo.util;
  */
 
 public final class Constant {
+
+    public static final String BASE_URL = "";
     /**
      * 表示从我的二维码页面弹的弹窗
      */

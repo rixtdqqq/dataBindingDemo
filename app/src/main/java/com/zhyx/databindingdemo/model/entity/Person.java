@@ -1,4 +1,4 @@
-package com.zhyx.databindingdemo.model;
+package com.zhyx.databindingdemo.model.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
@@ -36,14 +36,10 @@ public class Person {
 
     private String myAddress;
 
-    @NotNull
-    private String account;
-
-    @Generated(hash = 886738204)
+    @Generated(hash = 1380620713)
     public Person(long _id, @NotNull String userName, @NotNull String nickName,
             int age, @NotNull String comeFrom, @NotNull String gender,
-            String personalitySignature, String myAddress,
-            @NotNull String account) {
+            String personalitySignature, String myAddress) {
         this._id = _id;
         this.userName = userName;
         this.nickName = nickName;
@@ -52,7 +48,6 @@ public class Person {
         this.gender = gender;
         this.personalitySignature = personalitySignature;
         this.myAddress = myAddress;
-        this.account = account;
     }
 
     @Generated(hash = 1024547259)
@@ -122,17 +117,5 @@ public class Person {
     public void setMyAddress(String myAddress) {
         this.myAddress = myAddress;
     }
-
-    public String getAccount() {
-        return this.account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
-    }
-
-    
-
-
 
 }

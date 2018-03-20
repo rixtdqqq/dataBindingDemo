@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="navigationOnClickListener"
+            type="android.view.View.OnClickListener"/>
+
+        <variable
+            name="onCheckedChangeListener"
+            type="android.widget.RadioGroup.OnCheckedChangeListener"/>
+
+        <variable
+            name="viewModel"
+            type="com.zhyx.databindingdemo.viewmodel.UserRegisterActivityViewModel"/>
+
+        <variable
+            name="userName"
+            type="String"/>
+
+        <variable
+            name="password"
+            type="String"/>
+
+        <variable
+            name="passwordConfirm"
+            type="String"/>
+
+        <variable
+            name="nickname"
+            type="String"/>
+
+        <variable
+            name="area"
+            type="String"/>
+
+        <variable
+            name="gender"
+            type="Integer"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBg"
+        android:orientation="vertical"
+        tools:context="com.zhyx.databindingdemo.view.activity.UserRegisterActivity">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:minHeight="?attr/actionBarSize"
+            android:navigationOnClickListener="@{navigationOnClickListener}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:navigationIcon="@drawable/ic_keyboard_arrow_left_black_24dp">
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/register"/>
+
+            <TextView
+                android:id="@+id/register_new_user_done"
+                style="@style/TitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="@dimen/margin_20dp"
+                android:onClick="@{() -> viewModel.submit(userName,password,passwordConfirm,gender,nickname,area)}"
+                android:text="@string/done"
+                android:textSize="@dimen/title_text_size_14sp"/>
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@android:color/white">
+
+            <TextView
+                android:id="@+id/tv_new_user_name_title"
+                style="@style/TextStyle14Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_15dp"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="@string/account"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+            <EditText
+                android:id="@+id/et_new_user_name"
+                style="@style/TextStyle14Black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_15dp"
+                android:layout_marginRight="@dimen/margin_15dp"
+                android:background="@null"
+                android:hint="@string/account"
+                android:imeOptions="actionNext"
+                android:maxLength="15"
+                android:paddingLeft="@dimen/padding_5dp"
+                android:paddingRight="@dimen/padding_5dp"
+                android:singleLine="true"
+                android:text="@={userName}"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_new_user_name_title"
+                app:layout_constraintLeft_toRightOf="@+id/tv_new_user_name_title"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <View
+                android:id="@+id/line_new_user"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_1dp"
+                android:background="@color/colorBg"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_new_user_name_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_new_user_name_title"/>
+
+            <TextView
+                android:id="@+id/tv_new_user_pwd_title"
+                style="@style/TextStyle14Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="@string/password"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_new_user_name_title"
+                app:layout_constraintTop_toBottomOf="@+id/line_new_user"/>
+
+            <EditText
+                android:id="@+id/et_new_user_pwd"
+                style="@style/TextStyle14Black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_15dp"
+                android:background="@null"
+                android:hint="@string/password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:maxLength="15"
+                android:paddingLeft="@dimen/padding_5dp"
+                android:paddingRight="@dimen/padding_5dp"
+                android:singleLine="true"
+                android:text="@={password}"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_new_user_pwd_title"
+                app:layout_constraintLeft_toLeftOf="@+id/et_new_user_name"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <View
+                android:id="@+id/line_new_user_pwd"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_1dp"
+                android:background="@color/colorBg"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_new_user_name_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_new_user_pwd_title"/>
+
+            <TextView
+                android:id="@+id/tv_new_user_pwd_confirm_title"
+                style="@style/TextStyle14Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="@string/confirm_password"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_new_user_name_title"
+                app:layout_constraintTop_toBottomOf="@+id/line_new_user_pwd"/>
+
+            <EditText
+                android:id="@+id/et_new_user_pwd_confirm"
+                style="@style/TextStyle14Black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_15dp"
+                android:background="@null"
+                android:hint="@string/password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:maxLength="15"
+                android:paddingLeft="@dimen/padding_5dp"
+                android:paddingRight="@dimen/padding_5dp"
+                android:singleLine="true"
+                android:text="@={passwordConfirm}"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_new_user_pwd_confirm_title"
+                app:layout_constraintLeft_toLeftOf="@+id/et_new_user_name"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <View
+                android:id="@+id/line_new_user_pwd_confirm"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_1dp"
+                android:background="@color/colorBg"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_new_user_name_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_new_user_pwd_confirm_title"/>
+
+            <TextView
+                android:id="@+id/tv_new_user_gender_title"
+                style="@style/TextStyle14Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="@string/gender"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_new_user_name_title"
+                app:layout_constraintTop_toBottomOf="@+id/line_new_user_pwd_confirm"/>
+
+            <RadioGroup
+                android:id="@+id/rg_gender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_15dp"
+                android:contentDescription="@string/gender"
+                android:onCheckedChanged="@{onCheckedChangeListener}"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_new_user_gender_title"
+                app:layout_constraintLeft_toLeftOf="@+id/et_new_user_name"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_new_user_gender_title">
+
+                <RadioButton
+                    android:id="@+id/gender_male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/male"/>
+
+                <RadioButton
+                    android:id="@+id/gender_female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/female"/>
+
+                <RadioButton
+                    android:id="@+id/gender_secret"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/guess"/>
+            </RadioGroup>
+
+            <View
+                android:id="@+id/line_new_user_gender_confirm"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_1dp"
+                android:background="@color/colorBg"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_new_user_name_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_new_user_gender_title"/>
+
+
+            <TextView
+                android:id="@+id/tv_new_user_nickname_title"
+                style="@style/TextStyle14Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="@string/nickname"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_new_user_name_title"
+                app:layout_constraintTop_toBottomOf="@+id/line_new_user_gender_confirm"/>
+
+            <EditText
+                android:id="@+id/et_new_user_nickname"
+                style="@style/TextStyle14Black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_15dp"
+                android:background="@null"
+                android:hint="@string/nickname"
+                android:imeOptions="actionDone"
+                android:maxLength="15"
+                android:paddingLeft="@dimen/padding_5dp"
+                android:paddingRight="@dimen/padding_5dp"
+                android:singleLine="true"
+                android:text="@={nickname}"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_new_user_nickname_title"
+                app:layout_constraintLeft_toLeftOf="@+id/et_new_user_name"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <View
+                android:id="@+id/line_new_user_nickname"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_1dp"
+                android:background="@color/colorBg"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_new_user_name_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_new_user_nickname_title"/>
+
+            <TextView
+                android:id="@+id/tv_new_user_area_title"
+                style="@style/TextStyle14Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:paddingTop="@dimen/padding_8dp"
+                android:text="@string/area"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_new_user_name_title"
+                app:layout_constraintTop_toBottomOf="@+id/line_new_user_nickname"/>
+
+            <TextView
+                android:id="@+id/et_new_user_area"
+                style="@style/TextStyle14Black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_15dp"
+                android:hint="@string/area"
+                android:maxLength="15"
+                android:onClick="@{() -> viewModel.selectArea()}"
+                android:paddingLeft="@dimen/padding_5dp"
+                android:paddingRight="@dimen/padding_5dp"
+                android:singleLine="true"
+                android:text="@={area}"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_new_user_area_title"
+                app:layout_constraintLeft_toLeftOf="@+id/et_new_user_name"
+                app:layout_constraintRight_toRightOf="parent"/>
+        </android.support.constraint.ConstraintLayout>
+
+
+    </LinearLayout>
+</layout>
