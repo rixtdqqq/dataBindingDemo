@@ -58,7 +58,7 @@ public class MeInfoDialog extends android.app.Dialog {
         DialogMeInfoBinding binding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.dialog_me_info, null, false);
         setContentView(binding.getRoot());
         if (TextUtils.equals(mDialogFlag, Constant.DIALOG_FLAG_MY_CODE)) {//从我的二维码页面过来
-            binding.setMyCodeViewModel(new MyCodeDialogViewModel(this));
+            binding.setMyCodeViewModel(new MyCodeDialogViewModel(this,mContext));
             binding.setIsFromMyCode(true);
         } else if (TextUtils.equals(mDialogFlag, Constant.DIALOG_FLAG_PERSONAL_PHOTO)) {//从个人头像页面过来
             binding.setPersonalPhotoViewModel(new PersonalPhotoDialogViewModel(this));

@@ -26,5 +26,9 @@ public final class Constant {
      * 拍照
      */
     public static final int REQUEST_TAKE_PHOTO = 1;
+    /**
+     * 二维码
+     */
+    public static final int REQUEST_BARCODE = 2;
 
 }

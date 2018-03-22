@@ -5,9 +5,11 @@ import android.app.Application;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 
 
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 import com.zhyx.databindingdemo.model.entity.DaoMaster;
 import com.zhyx.databindingdemo.model.entity.DaoSession;
 
@@ -17,7 +19,7 @@ import com.zhyx.databindingdemo.model.entity.DaoSession;
  *  Created by Administrator on 2018/1/27.
  */
 
-public class App extends Application implements Application.ActivityLifecycleCallbacks {
+public class App extends MultiDexApplication implements Application.ActivityLifecycleCallbacks {
 
     private static Context mContext;
     private SQLiteDatabase db;
@@ -30,6 +32,8 @@ public class App extends Application implements Application.ActivityLifecycleCal
         initDao();
         //作用:可以得到所有的activity，包括第三方框架中的
         registerActivityLifecycleCallbacks(this);
+
+        ZXingLibrary.initDisplayOpinion(this);
     }
 
 

@@ -1,8 +1,13 @@
 package com.zhyx.databindingdemo.viewmodel;
 
+import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.zhyx.databindingdemo.App;
+import com.zhyx.databindingdemo.util.Constant;
+import com.zhyx.databindingdemo.view.activity.me.MeInfoCodeActivity;
 import com.zhyx.databindingdemo.view.dialog.MeInfoDialog;
 
 /**
@@ -13,9 +18,11 @@ import com.zhyx.databindingdemo.view.dialog.MeInfoDialog;
 public class MyCodeDialogViewModel {
 
     private MeInfoDialog mDialog;
+    private Context mContext;
 
-    public MyCodeDialogViewModel(MeInfoDialog dialog) {
+    public MyCodeDialogViewModel(MeInfoDialog dialog, Context context) {
         mDialog = dialog;
+        mContext=context;
     }
 
     /**
@@ -41,6 +48,13 @@ public class MyCodeDialogViewModel {
     public void scanCode() {
 
         mDialog.dismiss();
+        if (mContext instanceof MeInfoCodeActivity) {
+            MeInfoCodeActivity activity = (MeInfoCodeActivity) mContext;
+            Intent intent = new Intent(activity,CaptureActivity.class);
+            activity.startActivityForResult(intent, Constant.REQUEST_BARCODE);
+        }
+
+
         Toast.makeText(App.getAppContext(), "扫描二维码", Toast.LENGTH_SHORT).show();
     }
 
