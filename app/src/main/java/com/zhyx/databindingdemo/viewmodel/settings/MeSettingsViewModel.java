@@ -8,6 +8,7 @@ import com.zhyx.databindingdemo.view.activity.me.MeInfoCodeActivity;
 import com.zhyx.databindingdemo.view.activity.me.MeInfoMoreActivity;
 import com.zhyx.databindingdemo.view.activity.me.MeInfoNameSettingActivity;
 import com.zhyx.databindingdemo.view.activity.me.MeInfoPersonalPhotoActivity;
+import com.zhyx.databindingdemo.view.activity.settings.MeSettingsAboutActivity;
 import com.zhyx.databindingdemo.view.activity.settings.MeSettingsActivity;
 
 /**
@@ -56,10 +57,10 @@ public class MeSettingsViewModel {
     }
 
     /**
-     * 跳转到个人信息的我的地址页面
+     * 跳转到关于页面
      */
-    public void jumpToMeInfoAddressActivity() {
-        Intent intent = new Intent(mMeInfoActivity, MeInfoAddressActivity.class);
+    public void jumpToMeSettingsAboutActivity() {
+        Intent intent = new Intent(mMeInfoActivity, MeSettingsAboutActivity.class);
         mMeInfoActivity.startActivity(intent);
     }
 }

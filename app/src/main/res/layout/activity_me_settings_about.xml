@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.zhyx.databindingdemo.viewmodel.settings.MeSettingsAboutViewModel"/>
+
+
+        <variable
+            name="navigationOnClickListener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBg"
+        android:orientation="vertical"
+        tools:context="com.zhyx.databindingdemo.view.activity.settings.MeSettingsAboutActivity">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:minHeight="?attr/actionBarSize"
+            android:navigationOnClickListener="@{navigationOnClickListener}"
+            app:navigationIcon="@drawable/ic_keyboard_arrow_left_black_24dp">
+
+            <TextView
+                style="@style/TitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="关于"/>
+        </android.support.v7.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorBg"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <Button
+                    android:id="@+id/loadUrl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="loadUrl"/>
+
+                <Button
+                    android:id="@+id/evaluateJS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="evaluateJS"/>
+
+                <WebView
+                    android:id="@+id/wv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+</layout>

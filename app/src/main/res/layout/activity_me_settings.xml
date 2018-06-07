@@ -154,6 +154,7 @@
                         android:paddingBottom="@dimen/padding_8dp"
                         android:paddingLeft="@dimen/padding_15dp"
                         android:paddingRight="@dimen/margin_10dp"
+                        android:onClick="@{()->viewModel.jumpToMeSettingsAboutActivity()}"
                         android:paddingTop="@dimen/padding_8dp"
                         android:text="关于"/>
                 </LinearLayout>

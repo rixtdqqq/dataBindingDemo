@@ -28,6 +28,7 @@
             android:windowSoftInputMode="stateVisible"/>
         <activity android:name=".view.activity.me.MeInfoPersonalPhotoActivity"/>
         <activity android:name=".view.activity.settings.MeSettingsActivity"/>
+        <activity android:name=".view.activity.settings.MeSettingsAboutActivity"/>
         <activity android:name=".view.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
