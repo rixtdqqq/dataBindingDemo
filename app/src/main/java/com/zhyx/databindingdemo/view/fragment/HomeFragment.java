@@ -10,7 +10,12 @@ import android.view.ViewGroup;
 
 import com.zhyx.databindingdemo.R;
 import com.zhyx.databindingdemo.databinding.FragmentHomeBinding;
+import com.zhyx.databindingdemo.model.entity.Person;
 import com.zhyx.databindingdemo.view.base.BaseFragment;
+import com.zhyx.databindingdemo.viewmodel.adapter.MyListAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 首页
@@ -44,7 +49,11 @@ public class HomeFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         FragmentHomeBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
-//        binding.setAdapter(new MyListAdapter(personList,getActivity()));
+        List<Person> personList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            personList.add(new Person(0L,"zhu","zhu",30+i,"china","male","哈哈","地球"));
+        }
+        binding.setAdapter(new MyListAdapter(personList,getActivity()));
 
         return binding.getRoot();
     }

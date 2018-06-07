@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zhyx.databindingdemo.R;
-import com.zhyx.databindingdemo.databinding.FragmentHomeBinding;
+import com.zhyx.databindingdemo.databinding.FragmentSettingBinding;
 
 /**
  * 首页
@@ -22,9 +22,10 @@ public class SettingFragment extends Fragment {
 
     public static final String ARGS_PARAMS = "params";
     private String fragmentFlag;
+
     public static SettingFragment newInstance(String params) {
         Bundle args = new Bundle();
-        args.putString(ARGS_PARAMS,params);
+        args.putString(ARGS_PARAMS, params);
         SettingFragment fragment = new SettingFragment();
         fragment.setArguments(args);
         return fragment;
@@ -42,7 +43,7 @@ public class SettingFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        FragmentHomeBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
+        FragmentSettingBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_setting, container, false);
 
         return binding.getRoot();
     }

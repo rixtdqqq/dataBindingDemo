@@ -15,6 +15,7 @@ import com.zhyx.databindingdemo.databinding.ActivityMainBinding;
 import com.zhyx.databindingdemo.view.fragment.ChatFragment;
 import com.zhyx.databindingdemo.view.fragment.HomeFragment;
 import com.zhyx.databindingdemo.view.fragment.MeFragment;
+import com.zhyx.databindingdemo.view.fragment.SettingFragment;
 import com.zhyx.databindingdemo.viewmodel.MainActivityViewModel;
 import com.zhyx.databindingdemo.viewmodel.adapter.FrgPageAdapter;
 
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         mFragments = new ArrayList<>();
         mFragments.add(ChatFragment.newInstance("chat"));
         mFragments.add(HomeFragment.newInstance("1"));
-        mFragments.add(HomeFragment.newInstance("2"));
+        mFragments.add(SettingFragment.newInstance("2"));
         mFragments.add(MeFragment.newInstance("me"));
         mBinding.setAdapter(new FrgPageAdapter(getSupportFragmentManager(), mFragments));
         mBinding.setNavigationItemReselectedListener(this);

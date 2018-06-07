@@ -27,11 +27,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
+                app:collapsedTitleTextAppearance="@style/TitleStyle"
                 app:contentScrim="@color/colorPrimary"
                 app:expandedTitleMarginEnd="64dp"
                 app:expandedTitleMarginStart="48dp"
+                app:expandedTitleTextAppearance="@style/TitleStyleLarge"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:statusBarScrim="@color/colorPrimary">
+                app:statusBarScrim="@color/colorPrimary"
+                app:title="@string/app_name">
 
                 <ImageView
                     android:layout_width="match_parent"
