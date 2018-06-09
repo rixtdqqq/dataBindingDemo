@@ -4,9 +4,20 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.zhyx.databindingdemo.model.OnResultCallBack;
+import com.zhyx.databindingdemo.model.entity.ResponseBody;
+import com.zhyx.databindingdemo.model.entity.ResponseMessage;
+import com.zhyx.databindingdemo.util.HttpUtil;
 import com.zhyx.databindingdemo.view.activity.LoginActivity;
 import com.zhyx.databindingdemo.view.activity.MainActivity;
+import com.zhyx.databindingdemo.view.activity.PasswordForgetActivity;
 import com.zhyx.databindingdemo.view.activity.UserRegisterActivity;
+
+import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * 登录页面
@@ -26,9 +37,34 @@ public class LoginActivityViewModel {
             Toast.makeText(mActivity, "请输入用户名或密码", Toast.LENGTH_SHORT).show();
             return;
         }
-        Intent intent = new Intent(mActivity, MainActivity.class);
-        mActivity.startActivity(intent);
-        mActivity.finish();
+        HttpUtil.getInstance().getService().login(userName, password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody<ResponseMessage>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody<ResponseMessage> responseMessageResponseBody) {
+                        ResponseMessage data = responseMessageResponseBody.getData();
+                        Toast.makeText(mActivity, data.getMessage(), Toast.LENGTH_SHORT).show();
+                        if (data.getStatus()==1) {
+                            mActivity.startActivity(new Intent(mActivity, MainActivity.class));
+                            mActivity.finish();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Toast.makeText(mActivity, "e="+e, Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onComplete() {
+                    }
+                });
     }
 
     public void registerNewUser() {
@@ -36,6 +72,7 @@ public class LoginActivityViewModel {
         mActivity.startActivity(intent);
     }
     public void forgetPassword() {
-        Toast.makeText(mActivity, "忘记密码.", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(mActivity, PasswordForgetActivity.class);
+        mActivity.startActivity(intent);
     }
 }

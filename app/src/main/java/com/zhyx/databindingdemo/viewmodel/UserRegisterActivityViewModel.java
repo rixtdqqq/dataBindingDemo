@@ -2,7 +2,6 @@ package com.zhyx.databindingdemo.viewmodel;
 
 import android.graphics.Color;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -19,13 +18,12 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 import java.util.List;
 
-import rx.Observable;
-import rx.Scheduler;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.observables.AsyncOnSubscribe;
-import rx.observables.SyncOnSubscribe;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
 
 /**
  * 注册页面
@@ -169,14 +167,9 @@ public class UserRegisterActivityViewModel {
     public void getProvinceData() {
         Observable.just(ProvinceUtil.getProvinceJson(mActivity,"province.json")).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<String>() {
+                .subscribe(new Observer<String>() {
                     @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
+                    public void onSubscribe(Disposable d) {
 
                     }
 
@@ -209,6 +202,16 @@ public class UserRegisterActivityViewModel {
                         if (!pvOptions.isShowing()) {
                             pvOptions.show();
                         }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 });
 

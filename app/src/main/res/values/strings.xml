@@ -15,7 +15,10 @@
     <string name="guess">你猜</string>
     <string name="nickname">昵称</string>
     <string name="password">密码</string>
+    <string name="password_find_back">找回密码</string>
     <string name="account">用户名</string>
+    <string name="email">邮箱</string>
+    <string name="check_code_send">发送验证码</string>
     <string name="register">注册</string>
     <string name="chat">聊天</string>
     <string name="confirm_password">确认密码</string>
